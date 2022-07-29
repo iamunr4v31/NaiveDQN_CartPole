@@ -1,6 +1,5 @@
 import sys
 import pickle
-from typing import Iterable
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
@@ -28,7 +27,7 @@ class Net(nn.Module):
         return state
 
 class Agent:
-    def __init__(self, input_dims: int, n_actions: int, lr: float, gamma: float=0.99, 
+    def __init__(self, input_dims: Union[Iterable[int], int], n_actions: int, lr: float, gamma: float=0.99, 
                 epsilon: float=1.0, decay_rate: float=1e-5, epsilon_min: float=0.01) -> None:
         self.input_dims = input_dims
         self.lr = lr
